@@ -32,7 +32,7 @@
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/jinji_one_to_one?useSSL=false" />
+			value="jdbc:mysql://mysql-standalone:3306/jinji_one_to_one?useSSL=false" />
 		<property name="user" value="jinji" />
 		<property name="password" value="jinji" />
 
