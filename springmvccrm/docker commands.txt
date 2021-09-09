@@ -1,0 +1,27 @@
+#docker run --name mysql-standalone -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=jinji_one_to_one -e MYSQL_USER=jinji -e MYSQL_PASSWORD=jinji -v mysqlvol:/var/lib/mysql -d mysql:8.0 mysqld --default-authentication-plugin=mysql_native_password mysql:8.0
+
+#docker run --name mytomcatcontainer -p 8082:8080 --link mysql-standalone -v tomcatvolume:/usr/local/tomcat/webapps/ mytomcat8:1.0
+
+
+#docker run --name mysql-standalone -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=jinji_one_to_one -e MYSQL_USER=jinji -e MYSQL_PASSWORD=jinji -v mysqlvol:/var/lib/mysql -p 3306:3306 -d mariadb:10.4 mysqld --default-authentication-plugin=mysql_native_password
+
+
+#CREATE TABLE `jinji_one_to_one`.`customer_tracker` ( `id` INT NOT NULL , `first_name` VARCHAR(20) NOT NULL , `last_name` VARCHAR#(20) NOT NULL , `email` VARCHAR(20) NOT NULL , `address` VARCHAR(30) NOT NULL , PRIMARY KEY (`id`)) ;
+
+
+
+
+docker run --name mysql-standalone -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=jinji_one_to_one -e MYSQL_USER=jinji -e MYSQL_PASSWORD=jinji -v mysqlvol:/var/lib/mysql -p 3306:3306 -d  docker1703/srpingmvc-mysql-standalone
+
+docker run --name mytomcatcontainer -p 8082:8080 --link mysql-standalone -v tomcatvolume:/usr/local/tomcat/webapps/ -d docker1703/myspringmvctomcat8
+
+
+ docker cp  ./springmvccrm.war mytomcatcontainer:/usr/local/tomcat/webapp
+cp -r /mnt/e/testwar/springmvccrm.war .
+
+
+app :
+docker1703/myspringmvctomcat8
+
+DB:
+docker1703/srpingmvc-mysql-standalone (or) mariadb version >7

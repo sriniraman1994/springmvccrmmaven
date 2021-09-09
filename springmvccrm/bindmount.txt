@@ -1,0 +1,6 @@
+wsl2 backend binddata
+
+
+/run/desktop/mnt/host/e/jenkin-docker-data
+
+docker run -p 8082:8080 -p 50000:50000 -v /run/desktop/mnt/host/E/jenkin-docker-data:/var/jenkins_home jenkins

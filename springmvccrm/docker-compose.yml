@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  web:
+      image: docker1703/myspringmvctomcat8:1.0
+      volumes:
+        - "tomcatvolume:/usr/local/tomcat/webapps"
+      container_name: mytomcat
+      ports:
+        - "8082:8080"
+      depends_on:
+        - db
+      links:
+        - db:mysql-standalone
+ 
+  db:
+      image: docker1703/srpingmvc-mysql-standalone
+      container_name: mysql-standalone
+      ports:
+        - "3306:3306"
+      volumes:
+        - "mysqlvolume:/var/lib/mysql"
+      environment:
+        MYSQL_ROOT_PASSWORD: admin
+        MYSQL_DATABASE: jinji_one_to_one
+        MYSQL_USER: jinji
+        MYSQL_PASSWORD: jinji
+volumes:
+  mysqlvolume:
+  tomcatvolume:
